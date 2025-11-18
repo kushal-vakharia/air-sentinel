@@ -21,6 +21,7 @@ export default function Header({
         bgcolor: "#3E3E3E",
         boxShadow: "none",
         px: 2,
+        zIndex: 10000,
       }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>

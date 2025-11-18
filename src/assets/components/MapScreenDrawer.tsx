@@ -21,8 +21,9 @@ const MapScreenDrawer = () => {
       sx={{
         "& .MuiDrawer-paper": {
           width: isMobile ? "100%" : 360,
-          bgcolor: "#3A3A3A",
+          bgcolor: "#404040",
           color: "#fff",
+          marginTop: 8,
           p: 2,
           overflowY: "auto",
         },
