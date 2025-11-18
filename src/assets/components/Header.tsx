@@ -25,7 +25,9 @@ export default function Header({
       }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+        <Box
+          sx={{ display: "flex", alignItems: "center", gap: 4, height: "100%" }}
+        >
           <Box
             sx={{
               display: "flex",
@@ -33,6 +35,9 @@ export default function Header({
               gap: 1,
               cursor: "pointer",
               color: "#fff",
+              height: "100%",
+              px: 1.5,
+              backgroundColor: view === "map" ? "#00BD00" : "transparent",
             }}
             onClick={() => onSwitch("map")}
           >
@@ -73,7 +78,10 @@ export default function Header({
               gap: 1,
               cursor: "pointer",
               color: "#fff",
+              height: "100%",
+              px: 1.5,
               fontWeight: view === "dashboard" ? 700 : 400,
+              backgroundColor: view === "dashboard" ? "#00BD00" : "transparent",
             }}
             onClick={() => onSwitch("dashboard")}
           >
