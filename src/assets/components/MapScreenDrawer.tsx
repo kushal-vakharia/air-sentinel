@@ -1,8 +1,17 @@
-import { Box, Button, Drawer, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Drawer,
+  IconButton,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
 
 const MapScreenDrawer = () => {
   const [open, setOpen] = useState(true);
+  const isMobile = useMediaQuery("(max-width: 480px)");
 
   return (
     <Drawer
@@ -11,7 +20,7 @@ const MapScreenDrawer = () => {
       open={open}
       sx={{
         "& .MuiDrawer-paper": {
-          width: 360,
+          width: isMobile ? "100%" : 360,
           bgcolor: "#3A3A3A",
           color: "#fff",
           p: 2,
@@ -19,37 +28,68 @@ const MapScreenDrawer = () => {
         },
       }}
     >
-      {/* HEADER */}
-      <Typography sx={{ fontSize: 20, fontWeight: 700, mb: 1 }}>
-        Drone Details
-      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Typography
+          sx={{
+            fontWeight: 500,
+            fontStyle: "normal",
+            fontSize: "14px",
+            lineHeight: "100%",
+            letterSpacing: "0px",
+          }}
+        >
+          Drone Details
+        </Typography>
 
-      {/* DRONE TITLE */}
+        <IconButton onClick={() => setOpen(false)}>
+          <CloseIcon sx={{ color: "#fff", fontSize: 18 }} />
+        </IconButton>
+      </Box>
+
       <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
         <Box
           sx={{
-            width: 55,
-            height: 55,
-            bgcolor: "#5A5A5A",
-            borderRadius: 1,
+            width: 54,
+            height: 54,
+            bgcolor: "#fff",
           }}
         />
         <Box>
-          <Typography sx={{ fontSize: 18, fontWeight: 700 }}>EFV0</Typography>
-          <Typography sx={{ fontSize: 15, color: "#ddd" }}>Mini 4K</Typography>
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontStyle: "normal",
+              fontSize: "14px",
+              lineHeight: "100%",
+              letterSpacing: "0px",
+            }}
+          >
+            EFV0 <br /> Mini 4K
+          </Typography>
         </Box>
       </Box>
 
-      {/* BUTTON ROW */}
-      <Box sx={{ display: "flex", gap: 1, mb: 2 }}>
+      <Box sx={{ display: "flex", gap: 1, mb: 2, justifyContent: "flex-end" }}>
         <Button
           variant="contained"
           sx={{
-            bgcolor: "#E74A4A",
+            width: 52,
+            height: 24,
+            bgcolor: "#E84C3D",
             color: "#fff",
-            px: 2,
             textTransform: "none",
-            fontWeight: 600,
+            fontWeight: 500,
+            fontStyle: "normal",
+            fontSize: "12px",
+            lineHeight: "100%",
+            letterSpacing: "0px",
+            borderRadius: 0,
           }}
         >
           Share
@@ -60,28 +100,36 @@ const MapScreenDrawer = () => {
           sx={{
             bgcolor: "#000",
             color: "#fff",
-            px: 2,
             textTransform: "none",
-            fontWeight: 600,
+            fontWeight: 500,
+            fontStyle: "normal",
+            fontSize: "12px",
+            lineHeight: "100%",
+            letterSpacing: "0px",
+            borderRadius: 0,
           }}
         >
           Flight History
         </Button>
       </Box>
 
-      {/* TABS */}
-      <Box sx={{ display: "flex", gap: 1, mb: 2 }}>
+      <Box sx={{ display: "flex", mb: 2, width: "100%" }}>
         {["Flight", "Profile", "Notes"].map((item) => (
           <Button
+            variant="outlined"
             key={item}
             sx={{
-              bgcolor: "#fff",
-              color: "#000",
-              borderRadius: 1,
-              px: 2,
-              py: 0.8,
+              width: "100%",
+              height: 30,
+              border: "1px solid #fff",
+              color: "#fff",
               textTransform: "none",
-              fontWeight: 600,
+              fontWeight: 500,
+              fontStyle: "normal",
+              fontSize: "12px",
+              lineHeight: "100%",
+              letterSpacing: "0px",
+              borderRadius: 0,
             }}
           >
             {item}
@@ -89,63 +137,78 @@ const MapScreenDrawer = () => {
         ))}
       </Box>
 
-      {/* WHITELIST BUTTONS */}
-      <Box sx={{ display: "flex", gap: 1, mb: 3 }}>
+      <Box sx={{ display: "flex", gap: 1, mb: 3, justifyContent: "flex-end" }}>
         <Button
           variant="contained"
           sx={{
-            bgcolor: "#555",
+            maxWidth: 68,
+            height: 24,
+            bgcolor: "#E84C3D",
             color: "#fff",
             flex: 1,
+            py: 1,
             textTransform: "none",
+            fontWeight: 500,
+            fontStyle: "normal",
+            fontSize: "12px",
+            lineHeight: "100%",
+            letterSpacing: "0px",
+            borderRadius: 0,
           }}
         >
           Whitelist
         </Button>
+
         <Button
           variant="contained"
           sx={{
-            bgcolor: "#444",
+            width: 120,
+            height: 24,
+            bgcolor: "#000",
             color: "#fff",
-            flex: 1,
             textTransform: "none",
+            fontWeight: 500,
+            fontStyle: "normal",
+            fontSize: "12px",
+            lineHeight: "100%",
+            letterSpacing: "0px",
+            borderRadius: 0,
           }}
         >
           Add to Watchlist
         </Button>
       </Box>
 
-      {/* FLIGHT DETAILS */}
-      <Box
-        sx={{
-          border: "2px solid #2D9CDB",
-          borderRadius: 1,
-          p: 2,
-          mb: 3,
-        }}
-      >
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
         <Typography
           sx={{
-            fontWeight: 600,
-            fontSize: 16,
-            mb: 1,
-            display: "flex",
-            justifyContent: "space-between",
+            fontWeight: 700,
+            fontStyle: "normal",
+            fontSize: "14px",
+            lineHeight: "100%",
+            letterSpacing: "0px",
           }}
         >
           Flight Details
-          <Box sx={{ fontSize: 12, opacity: 0.8 }}>
-            Last Seen: 2 days 23 hours 50 min
-          </Box>
         </Typography>
 
-        {/* GRID VALUES */}
+        <Typography
+          sx={{
+            fontWeight: 400,
+            fontStyle: "normal",
+            fontSize: "10px",
+            lineHeight: "100%",
+            letterSpacing: "0px",
+          }}
+        >
+          Last Seen: 2 days 23 hours 50 min
+        </Typography>
+
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: 1,
-            mt: 1,
+            gap: 1.2,
           }}
         >
           {[
@@ -153,7 +216,7 @@ const MapScreenDrawer = () => {
             ["Flight Duration", "00:00:37"],
             ["Drone Altitude", "328 ft"],
             ["Latitude/Longitude", "29.7633182, -95.3731794"],
-            ["Height", "269.03ft"],
+            ["Height", "269.03 ft"],
             ["UASID", "16629963001 761402881337"],
             ["Mac Address", "1662996530"],
             ["Drone Detected By", "Texas County Sheriff"],
@@ -162,9 +225,10 @@ const MapScreenDrawer = () => {
             <Box
               key={i}
               sx={{
-                bgcolor: "#4A4A4A",
+                // ⬇ First item spans full row
+                gridColumn: i === 0 ? "1 / -1" : "auto",
                 borderRadius: 1,
-                p: 1.2,
+                p: 1.3,
               }}
             >
               <Typography sx={{ fontSize: 13, opacity: 0.9 }}>
@@ -178,67 +242,88 @@ const MapScreenDrawer = () => {
         </Box>
       </Box>
 
-      {/* PILOT LOCATION */}
-      <Box sx={{ bgcolor: "#4A4A4A", p: 2, borderRadius: 1, mb: 2 }}>
-        <Typography sx={{ fontWeight: 700 }}>Pilot Location</Typography>
-        <Typography sx={{ fontSize: 14 }}>
-          1526 Memorial Drive
-          <br />
-          Frontage Road, Houston TX
-        </Typography>
-
-        <Button
-          variant="contained"
+      {[
+        [
+          "Pilot Location",
+          "1526 Memorial Drive\nFrontage Road, Houston TX",
+          "29.7633182, -95.3731794",
+        ],
+        [
+          "Drone Location",
+          "1526 Memorial Drive\nFrontage Road, Houston TX",
+          "29.7633182, -95.3731794",
+        ],
+      ].map(([label, addr, desc], i) => (
+        <Box
+          key={i}
           sx={{
-            mt: 1,
-            bgcolor: "#E74A4A",
-            color: "#fff",
-            textTransform: "none",
-            fontWeight: 600,
+            p: 2,
             borderRadius: 1,
+            mb: 2,
+            display: "flex",
+            alignItems: "center",
           }}
         >
-          Go to Maps
-        </Button>
-      </Box>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
+            <Typography
+              sx={{
+                fontWeight: 700,
+                fontStyle: "normal",
+                fontSize: "14px",
+                lineHeight: "100%",
+                letterSpacing: "0px",
+              }}
+            >
+              {label}
+            </Typography>
 
-      {/* DRONE LOCATION */}
-      <Box sx={{ bgcolor: "#4A4A4A", p: 2, borderRadius: 1 }}>
-        <Typography sx={{ fontWeight: 700 }}>Drone Location</Typography>
-        <Typography sx={{ fontSize: 14 }}>
-          1526 Memorial Drive
-          <br />
-          Frontage Road, Houston TX
-        </Typography>
+            <Typography
+              sx={{
+                fontWeight: 500,
+                fontStyle: "normal",
+                fontSize: "12px",
+                lineHeight: "100%",
+                letterSpacing: "0px",
+              }}
+            >
+              {addr}
+            </Typography>
 
-        <Button
-          variant="contained"
-          sx={{
-            mt: 1,
-            bgcolor: "#E74A4A",
-            color: "#fff",
-            textTransform: "none",
-            fontWeight: 600,
-            borderRadius: 1,
-          }}
-        >
-          Go to Maps
-        </Button>
-      </Box>
+            <Typography
+              sx={{
+                color: "#C4C4C4",
+                fontWeight: 400,
+                fontStyle: "normal",
+                fontSize: "12px",
+                lineHeight: "100%",
+                letterSpacing: "0px",
+              }}
+            >
+              {desc}
+            </Typography>
+          </Box>
 
-      <Button
-        onClick={() => setOpen(false)}
-        sx={{
-          mt: 3,
-          bgcolor: "#000",
-          color: "#fff",
-          textTransform: "none",
-          fontWeight: 600,
-          width: "100%",
-        }}
-      >
-        Close
-      </Button>
+          <Button
+            variant="contained"
+            sx={{
+              width: 88,
+              height: 24,
+              bgcolor: "#E84C3D",
+              color: "#fff",
+              textTransform: "none",
+              fontWeight: 700,
+              fontStyle: "normal",
+              fontSize: "11px",
+              lineHeight: "12px",
+              letterSpacing: "0px",
+              borderRadius: 1,
+              textWrap: "nowrap",
+            }}
+          >
+            Go to Maps
+          </Button>
+        </Box>
+      ))}
     </Drawer>
   );
 };
