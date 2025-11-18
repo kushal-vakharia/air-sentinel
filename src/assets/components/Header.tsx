@@ -34,6 +34,7 @@ export default function Header({
               cursor: "pointer",
               color: "#fff",
             }}
+            onClick={() => onSwitch("map")}
           >
             <SyncIcon fontSize="small" />
             <Typography sx={{ fontSize: 14 }}>Live</Typography>

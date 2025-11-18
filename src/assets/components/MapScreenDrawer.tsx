@@ -20,7 +20,7 @@ const MapScreenDrawer = () => {
       open={open}
       sx={{
         "& .MuiDrawer-paper": {
-          width: isMobile ? "100%" : 360,
+          width: isMobile ? "100%" : 326,
           bgcolor: "#404040",
           color: "#fff",
           marginTop: 8,
@@ -260,7 +260,6 @@ const MapScreenDrawer = () => {
           sx={{
             p: 2,
             borderRadius: 1,
-            mb: 2,
             display: "flex",
             alignItems: "center",
           }}
